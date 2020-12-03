@@ -82,7 +82,6 @@ class TodoList extends React.Component {
       }),
     });
   };
-
   updateTodos = (items) => {
     this.setState({
       todos: items,
@@ -95,6 +94,11 @@ class TodoList extends React.Component {
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
     this.updateTodos(items);
+  };
+  clearCompletedTodos = () => {
+    this.setState({
+      todos: this.state.todos.filter((todo) => !todo.complete),
+    });
   };
   render() {
     return (
@@ -134,8 +138,15 @@ class TodoList extends React.Component {
             )}
           </Droppable>
         </DragDropContext>
-        Number of Active Todos :
-        {this.state.todos.filter((todo) => !todo.complete).length}
+        <div>
+          Number of Active Todos :
+          {this.state.todos.filter((todo) => !todo.complete).length}
+        </div>
+        {this.state.todos.filter((todo) => todo.complete).length ? (
+          <button onClick={this.clearCompletedTodos}>Clear completed</button>
+        ) : (
+          ""
+        )}
       </div>
     );
   }
