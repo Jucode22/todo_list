@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./editPopUp.css";
 class EditPopUp extends React.Component {
   constructor(props) {
     super(props);

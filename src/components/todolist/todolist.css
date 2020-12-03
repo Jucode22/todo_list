@@ -1,0 +1,14 @@
+h1 {
+  display: flex;
+  justify-content: center;
+}
+.Todo {
+  display: flex;
+  justify-content: center;
+  margin: 10 0;
+}
+.todos {
+  padding: 15px;
+  width: 500px;
+  margin: 0 auto;
+}

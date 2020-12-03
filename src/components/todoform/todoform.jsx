@@ -1,6 +1,6 @@
 import React from "react";
 import { nanoid } from "nanoid";
-
+import "./todoform.css";
 class TodoForm extends React.Component {
   state = {
     text: "",

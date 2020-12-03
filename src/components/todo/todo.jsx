@@ -1,6 +1,6 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
-import EditPopUp from "../editPopUp";
+import EditPopUp from "../editPopUp/editPopUp";
 import "./todo.style.css";
 import { resetServerContext } from "react-beautiful-dnd";
 
@@ -22,12 +22,6 @@ const Todo = ({
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           className="Todo"
-          style={{
-            height: "50px",
-            border: "black",
-            display: "flex",
-            justifyContent: "center",
-          }}
         >
           <div
             style={{ textDecoration: todo.complete ? "line-through" : "" }}

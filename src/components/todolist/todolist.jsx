@@ -1,9 +1,9 @@
-import { nanoid } from "nanoid";
 import React from "react";
-import Todo from "./todo/todo";
-import TodoForm from "./todoform";
+import Todo from "../todo/todo";
+import TodoForm from "../todoform/todoform";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { resetServerContext } from "react-beautiful-dnd";
+import "./todolist.css";
 
 resetServerContext();
 class TodoList extends React.Component {
@@ -83,7 +83,7 @@ class TodoList extends React.Component {
   };
   render() {
     return (
-      <div className="App">
+      <div className="TodoList">
         <h1>Todo List</h1>
         {/* <form className="TodoForm" onSubmit={this.handleSubmit}>
           <input
@@ -102,7 +102,6 @@ class TodoList extends React.Component {
                 className="todos"
                 {...provided.droppableProps}
                 ref={provided.innerRef}
-                style={{ backgroundColor: "lightblue", border: "black" }}
               >
                 {this.state.todos.map((todo, index) => (
                   <Todo
@@ -117,6 +116,7 @@ class TodoList extends React.Component {
                     todos={this.state.todos}
                   />
                 ))}
+                {provided.placeholder}
               </ul>
             )}
           </Droppable>
