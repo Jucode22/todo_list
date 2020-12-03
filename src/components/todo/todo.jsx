@@ -23,7 +23,7 @@ const Todo = ({
           ref={provided.innerRef}
           className="Todo"
           style={{
-            height: "30px",
+            height: "50px",
             border: "black",
             display: "flex",
             justifyContent: "center",

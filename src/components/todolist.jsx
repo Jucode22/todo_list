@@ -1,33 +1,14 @@
 import { nanoid } from "nanoid";
 import React from "react";
 import Todo from "./todo/todo";
+import TodoForm from "./todoform";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { resetServerContext } from "react-beautiful-dnd";
 
 resetServerContext();
 class TodoList extends React.Component {
   state = {
-    text: "",
     todos: [],
-  };
-
-  handleChange = (event) => {
-    this.setState({
-      text: event.target.value,
-    });
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.addTodo({
-      text: this.state.text,
-      id: nanoid(),
-      complete: false,
-      edit: false,
-    });
-    this.setState({
-      text: "",
-    });
   };
 
   addTodo = (todo) => {
@@ -103,7 +84,8 @@ class TodoList extends React.Component {
   render() {
     return (
       <div className="App">
-        <form className="TodoForm" onSubmit={this.handleSubmit}>
+        <h1>Todo List</h1>
+        {/* <form className="TodoForm" onSubmit={this.handleSubmit}>
           <input
             placeholder="add todo ..."
             onChange={this.handleChange}
@@ -111,7 +93,8 @@ class TodoList extends React.Component {
             value={this.state.text}
           />
           <button onSubmit={this.handleSubmit}>Add Todo</button>
-        </form>
+        </form> */}
+        <TodoForm onSubmit={this.addTodo} />
         <DragDropContext onDragEnd={this.handleOnDragEnd}>
           <Droppable droppableId="todos">
             {(provided) => (
@@ -119,6 +102,7 @@ class TodoList extends React.Component {
                 className="todos"
                 {...provided.droppableProps}
                 ref={provided.innerRef}
+                style={{ backgroundColor: "lightblue", border: "black" }}
               >
                 {this.state.todos.map((todo, index) => (
                   <Todo
@@ -133,7 +117,6 @@ class TodoList extends React.Component {
                     todos={this.state.todos}
                   />
                 ))}
-                {provided.placeholder}
               </ul>
             )}
           </Droppable>
